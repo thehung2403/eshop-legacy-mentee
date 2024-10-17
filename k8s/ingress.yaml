@@ -30,4 +30,17 @@ spec:
             name: eshop-backend
             port:
               number: 8090
-              
+      - path: /api/carts
+        pathType: Prefix
+        backend:
+          service:
+            name: eshop-cartservice
+            port:
+              number: 8091
+      - path: /api/products
+        pathType: Prefix
+        backend:
+          service:
+            name: eshop-productservice
+            port:
+              number: 8092

@@ -14,8 +14,8 @@ import com.samsungsds.eshop.shipping.ShippingRequest;
 import com.samsungsds.eshop.shipping.ShippingResult;
 import com.samsungsds.eshop.shipping.ShippingService;
 
-import io.swagger.annotations.Api; //👈👈  add line
-import io.swagger.annotations.ApiOperation; //👈👈  add line
+// import io.swagger.annotations.Api; //👈👈  add line
+// import io.swagger.annotations.ApiOperation; //👈👈  add line
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/checkouts")
-@Api(tags = "주문", description = "주문 관련 API") //👈👈  add line
+// @Api(tags = "주문", description = "주문 관련 API") //👈👈  add line
 public class OrderController {
     private final Logger logger = LoggerFactory.getLogger(OrderController.class);
     private final OrderService orderService;
@@ -49,7 +49,7 @@ public class OrderController {
     }
 
     @PostMapping(value = "/orders")
-    @ApiOperation(value = "주문 생성") //👈👈  add line
+    // @ApiOperation(value = "주문 생성") //👈👈  add line
     public ResponseEntity<OrderResult> placeOrder(@RequestBody OrderRequest orderRequest) {
         logger.info("placeOrder : " + orderRequest);
 
