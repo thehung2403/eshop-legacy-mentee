@@ -2,18 +2,18 @@ package com.samsungsds.eshop.product;
 
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.samsungsds.eshop.payment.Money;
 
 @Entity
 public class Product {
     @Id
+    @Column(nullable = false)
     private String id;
     @Column(nullable = false)
     private String name;
@@ -23,10 +23,9 @@ public class Product {
     private String picture;
     @Column(nullable = false)
     private Money priceUsd;
-    @ElementCollection
-    @CollectionTable(name="product_category", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name="category")
-    private Set<String> categories;
+    @OneToMany(mappedBy = "product")
+    @JsonBackReference
+    private Set<ProductCategory> categories;
 
     public String getId() {
         return this.id;
@@ -68,24 +67,24 @@ public class Product {
         this.priceUsd = priceUsd;
     }
 
-    public Set<String> getCategories() {
+    public Set<ProductCategory> getCategories() {
         return this.categories;
     }
 
-    public void setCategories(Set<String> categories) {
+    public void setCategories(Set<ProductCategory> categories) {
         this.categories = categories;
     }
 
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", picture='" + getPicture() + "'" +
-            ", priceUsd='" + getPriceUsd() + "'" +
-            ", categories='" + getCategories() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", picture='" + getPicture() + "'" +
+                ", priceUsd='" + getPriceUsd() + "'" +
+                ", categories='" + getCategories() + "'" +
+                "}";
     }
 
 }

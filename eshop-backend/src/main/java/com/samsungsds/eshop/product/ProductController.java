@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api; //👈👈  add line
+import io.swagger.annotations.ApiOperation; //👈👈  add line
+
 @RestController
 @RequestMapping(value = "/api/products")
+@Api(tags = "상품", description = "상품 관련 API") //👈👈  add line
 public class ProductController {
   private final ProductService productService;
 
@@ -18,6 +22,7 @@ public class ProductController {
   }
 
   @GetMapping
+  @ApiOperation(value = "상품 조회") //👈👈  add line
   public ResponseEntity<Products> fetchProducts(@RequestParam(value = "ids", required = false) String ids) {
     Products products = null;
     if (ids == null || ids.isEmpty()) {
@@ -35,6 +40,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/{id}")
+  @ApiOperation(value = "id로 상품 조회") //👈👈  add line
   public ResponseEntity<Product> fetchProductsByIds(@PathVariable("id") String id) {
     Product product = productService.fetchProductById(id);
     return ResponseEntity.ok(product);

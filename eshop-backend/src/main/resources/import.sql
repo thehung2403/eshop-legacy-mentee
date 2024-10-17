@@ -32,6 +32,13 @@ INSERT INTO currency (currency_code, currency_value) VALUES (  'SGD', 1.5349);
 INSERT INTO currency (currency_code, currency_value) VALUES (  'THB', 36.012);
 INSERT INTO currency (currency_code, currency_value) VALUES (  'ZAR', 16.0583);
 
+INSERT INTO category(category, name) VALUES ('vintage','vintage');
+INSERT INTO category(category, name) VALUES ('photography','photography');
+INSERT INTO category(category, name) VALUES ('cookware','cookware');
+INSERT INTO category(category, name) VALUES ('gardening','gardening');
+INSERT INTO category(category, name) VALUES ('music','music');
+INSERT INTO category(category, name) VALUES ('cycling','cycling');
+
 INSERT INTO ad (category, redirect_url, text) VALUES ('photography','/products/2ZYFJ3GM2N','Film camera for sale. 50% off.');
 INSERT INTO ad (category, redirect_url, text) VALUES ('vintage','/products/2ZYFJ3GM2N','Film camera for sale. 50% off.');
 INSERT INTO ad (category, redirect_url, text) VALUES ('photography','/products/66VCHSJNUP','Vintage camera lens for sale. 20% off.');
