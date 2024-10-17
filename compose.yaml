@@ -1,0 +1,35 @@
+version: "3"
+services:
+  redis:
+    image: redis:5.0-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+  postgres:
+    image: postgres:13
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=eshop_db
+      - POSTGRES_USER=eshop_user
+      - POSTGRES_PASSWORD=password
+    container_name: eshop_postgres
+  # backend:
+  #   depends_on:
+  #     - postgres
+  #   image: <<개인 Backend Image Registry URI>>:<<개인 Backend Image Tag>>
+  #   ports:
+  #     - "8090:8090"
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://eshop_postgres:5432/eshop_db
+  #     - SPRING_REDIS_HOST=redis
+  # frontend:
+  #   depends_on:
+  #     - backend
+  #   image: <<개인 Frontend Image Registry URI>>:<<개인 Frontend Image Tag>>
+  #   ports:
+  #     - "8080:8080"
+  #   command: http-server dist --proxy http://backend:8090
